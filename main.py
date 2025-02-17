@@ -86,7 +86,7 @@ def typing_test():
     print("\n\nTyping test complete!")
     print(f"Your input: {user_input}")
     print(f"Target text: {target_text}")
-    accuracy = ((len(target_text) - mistakes) / len(target_text)) * 100  # Correct characters divided by total characters
+    accuracy = accuracy = ((index - mistakes) / index) * 100  # Correct characters divided by total characters written
     print(f"Accuracy: {accuracy:.2f}%")
 
 if __name__ == "__main__":
