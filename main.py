@@ -1,13 +1,13 @@
-import msvcrt
+from msvcrt import getwch
 from random import sample
 from json import load
-import os
+from os import path
 
 # Function to get the absolute path to the JSON files
 def get_file_path(filename):
     # Assuming the JSON files are in the same directory as the script
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    return os.path.join(script_dir, filename)
+    script_dir = path.dirname(path.abspath(__file__))
+    return path.join(script_dir, filename)
 
 # Game settings function
 def game_settings():
@@ -50,7 +50,7 @@ def typing_test():
         try:
             word_count = int(input("Enter word count: ").strip())
             if word_count <= 0:
-                raise ValueError("Word count must be a positive integer.")
+                raise ValueError("Word count must be a non-negative number.")
             break
         except ValueError as e:
             print(f"Invalid input: {e}. Please enter a positive integer.")
@@ -67,7 +67,7 @@ def typing_test():
     backspace_char = b'\x08'  # ASCII value for backspace
 
     while True:
-        char = msvcrt.getwch()  # Use getwch to handle wide characters (UTF-8)
+        char = getwch()  # Use getwch to handle wide characters (UTF-8)
         if char == '\r':  # Enter key
             break
         elif char == '\x08' and index > 0:  # Backspace key
